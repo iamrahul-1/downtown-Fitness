@@ -1,1 +1,1 @@
-# downtown-Fitness
+# downtown-fitness

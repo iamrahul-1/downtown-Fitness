@@ -15,8 +15,7 @@ const Login = () => {
     await signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         const user = userCredential.user;
-        console.log(user);
-        navigate("/home");
+        navigate("/");
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -53,14 +52,14 @@ const Login = () => {
             <input type="checkbox" />
             Remeber me
           </label>
-          <Link to={`register`}>Forgot password?</Link>
+          <Link to={`/register`}>Forgot password?</Link>
         </div>
         <button type="submit" className="btn" onClick={onSubmit}>
           Login
         </button>
         <div className="register-link">
           <p>
-            Don't have an account?<Link to={`register`}>Register</Link>
+            Don't have an account?<Link to={`/register`}>Register</Link>
           </p>
         </div>
       </form>

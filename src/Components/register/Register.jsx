@@ -16,7 +16,7 @@ const Register = () => {
       .then((userCredential) => {
         const user = userCredential;
         console.log(user);
-        navigate("/");
+        navigate("/login");
       })
       .catch((error) => {
         const errorCode = error.code;

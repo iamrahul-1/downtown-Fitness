@@ -8,14 +8,13 @@ const Register = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [name, setName] = useState("");
 
-  const onSubmit = async (e) => {
-    e.preventDefault();
-
+  const onSubmit = async () => {
     await createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        const user = userCredential;
-        console.log(user);
+        const user = userCredential.user;
+        user.displayName = name;
         navigate("/login");
       })
       .catch((error) => {
@@ -26,34 +25,44 @@ const Register = () => {
   };
 
   return (
-    <div className="wrapper">
-      <form action="">
+    <div className="main">
+      <div className="wrapper">
         <h1>Register</h1>
-        <div className="input-box">
-          <input
-            type="email"
-            placeholder="Email"
-            required
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </div>
-        <div className="input-box">
-          <input
-            type="password"
-            placeholder="Password"
-            required
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </div>
-        <button type="submit" className="btn" onClick={onSubmit}>
-          Register
-        </button>
-        <div className="register-link">
-          <p>
-            Already have account? <Link to={`/`}>Login</Link>
-          </p>
-        </div>
-      </form>
+        <form action={onSubmit}>
+          <div className="input-box">
+            <input
+              type="text"
+              placeholder="Name"
+              required
+              onChange={(e) => setName(e.target.value)}
+            />
+          </div>
+          <div className="input-box">
+            <input
+              type="email"
+              placeholder="Email"
+              required
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </div>
+          <div className="input-box">
+            <input
+              type="password"
+              placeholder="Password"
+              required
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </div>
+          <button type="submit" className="btn">
+            Register
+          </button>
+          <div className="register-link">
+            <p>
+              Already have account? <Link to={`/login`}>Login</Link>
+            </p>
+          </div>
+        </form>
+      </div>
     </div>
   );
 };

@@ -1,13 +1,13 @@
-body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  /* background: seagreen; */
+.main {
   background: url(hero.png) no-repeat;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background-size: cover;
   background-position: center;
 }
+
 .wrapper {
   width: 420px;
   /* background: purple; */
